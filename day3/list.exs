@@ -1,4 +1,8 @@
 defmodule SomeList do
+  def smallest_largest(list) do
+  {the_smaller(list), the_biggest(list)}
+  end
+
   def the_biggest(list) when is_list(list) do
     the_biggest(list, hd(list))
   end
@@ -32,8 +36,11 @@ defmodule SomeList do
   end
 end
 
+
 # use case
 SomeList.the_biggest([1,3,7])
 # return 7
 SomeList.the_smaller([1,3,7])
 # return 1
+SomeList.smallest_largest([1,4,7,8,9])
+# return {1,9}

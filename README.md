@@ -12,4 +12,4 @@ Learning functional programming with Elixir
 
     [x] create the func to get the max value
     
-    [] return the max and min like a tuple
+    [x] return the max and min like a tuple
