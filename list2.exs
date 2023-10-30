@@ -1,5 +1,5 @@
 defmodule SomeList2 do
-  def smallest_largest(list) do
+  def min_max(list) do
     {max(list), min(list)}
   end
 
