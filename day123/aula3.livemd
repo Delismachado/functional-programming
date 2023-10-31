@@ -1,0 +1,210 @@
+# aula3
+
+## Section
+
+Aula 3
+
+```elixir
+defmodule PureFun do
+  def dobro(numero) do
+    numero * 2
+  end
+end
+```
+
+```elixir
+defmodule InpureFuc do
+  def imprimir_mensagem(mensagem) do
+    IO.puts("Mensagem: #{mensagem}")
+  end
+end
+```
+
+```elixir
+PureFun.dobro(2)
+```
+
+```elixir
+InpureFuc.imprimir_mensagem("test")
+```
+
+```elixir
+defmodule MenorMaior do
+  def encontrar_menor_maior(lista) when is_list(lista) and length(lista) > 0 do
+    {Enum.min(lista), Enum.max(lista)}
+  end
+end
+```
+
+```elixir
+lista = [12, 34, 48, 48, 3]
+{menor, maior} = MenorMaior.encontrar_menor_maior(lista)
+IO.puts("Menor: #{menor}, Maior: #{maior}")
+```
+
+```elixir
+defmodule MathOperation do
+  def smallest([head | tail]) do
+    smallest(head, tail)
+  end
+
+  defp smallest(current_smallest, []), do: current_smallest
+
+  defp smallest(current_smallest, [head | tail]) when head < current_smallest do
+    smallest(head, tail)
+  end
+
+  defp smallest(current_smallest, [_head | tail]) do
+    smallest(current_smallest, tail)
+  end
+end
+```
+
+```elixir
+MathOperation.smallest([1, 2])
+```
+
+```elixir
+defmodule Lasagna do
+  def expected_minutes_in_oven do
+    40
+  end
+
+  def remaining_minutes_in_oven(minutes) do
+    expected_minutes_in_oven() - minutes
+  end
+
+  def preparation_time_in_minutes(layers) do
+    layers * 2
+  end
+
+  def total_time_in_minutes(layers, minutes) do
+  end
+
+  def alarm do
+    "Ding!"
+  end
+end
+```
+
+```elixir
+Lasagna.alarm()
+```
+
+### Create a function in Elixir that takes a list and returns a tuple containing the max and min values in the list. Do not use the Enum function.
+
+TODO
+
+```
+1. define the module
+
+2. create the func to get the min
+
+3. create the func to get the max
+
+4. return the max and min like a tuple
+```
+
+```elixir
+defmodule SomeList do
+  def smallest_largest(list) do
+    {the_smaller(list), the_biggest(list)}
+  end
+
+  def the_biggest(list) when is_list(list) do
+    the_biggest(list, hd(list))
+  end
+
+  defp the_biggest([current | rest], max) when current > max do
+    the_biggest(rest, current)
+  end
+
+  defp the_biggest([_ | rest], max) do
+    the_biggest(rest, max)
+  end
+
+  defp the_biggest([], max) do
+    max
+  end
+
+  def the_smaller(list) when is_list(list) do
+    the_smaller(list, hd(list))
+  end
+
+  defp the_smaller([current | rest], min) when current < min do
+    the_smaller(rest, current)
+  end
+
+  defp the_smaller([_ | rest], min) do
+    the_smaller(rest, min)
+  end
+
+  defp the_smaller([], min) do
+    min
+  end
+end
+```
+
+```elixir
+SomeList.smallest_largest([1, 4, 7, 8, 9])
+```
+
+```elixir
+SomeList.the_biggest([1, 3, 7])
+```
+
+```elixir
+SomeList.the_smaller([1, 3, 7])
+```
+
+```elixir
+defmodule SomeList2 do
+  def smallest_largest(list) do
+    {max(list), min(list)}
+  end
+
+  def max([]) do
+    nil
+  end
+
+  def max([head | tail]) when tail == [] do
+    head
+  end
+
+  def max([head | tail]) do
+    if head > max(tail) do
+      head
+    else
+      max(tail)
+    end
+  end
+
+  def min([]) do
+    nil
+  end
+
+  def min([head | tail]) when tail == [] do
+    head
+  end
+
+  def min([head | tail]) do
+    if head < min(tail) do
+      head
+    else
+      min(tail)
+    end
+  end
+end
+```
+
+```elixir
+SomeList2.max([1, 7])
+```
+
+```elixir
+SomeList2.min([1, 2, 3])
+```
+
+```elixir
+SomeList2.smallest_largest([1, 2, 3, 4])
+```
